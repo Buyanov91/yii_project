@@ -49,11 +49,13 @@ class DirectorController extends Controller
     {
         $searchModel = new SearchDirector();
         $directors = Directors::find()
-            ->select('directors.*')
+            ->select('directors.*, count(films.director_id)')
+            ->from('directors')
             ->joinWith('films', '`films`.`director_id` = `directors`.`id`')
+            ->groupBy('directors.id')
+            ->having('count(films.director_id) > 1')
             ->all();
         $dataProvider = new ArrayDataProvider(['allModels' => $directors]);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
