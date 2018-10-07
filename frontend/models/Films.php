@@ -22,6 +22,11 @@ class Films extends \yii\db\ActiveRecord
         return 'films';
     }
 
+    public function getDirector()
+    {
+        return $this->hasOne(Directors::className(), ['id' => 'director_id']);
+    }
+
     /**
      * {@inheritdoc}
      */

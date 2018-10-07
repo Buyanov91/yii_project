@@ -20,6 +20,11 @@ class Directors extends \yii\db\ActiveRecord
         return 'directors';
     }
 
+    public function getFilms()
+    {
+        return $this->hasMany(Films::className(), ['director_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */

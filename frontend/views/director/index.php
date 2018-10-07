@@ -13,8 +13,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="directors-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <p>
+        <?= Html::a('Вывсти режиссеров у которых есть минимум два фильма', ['show'], ['class' => 'btn btn-warning']) ?>
+    </p>
     <p>
         <?= Html::a('Create Directors', ['create'], ['class' => 'btn btn-success']) ?>
     </p>

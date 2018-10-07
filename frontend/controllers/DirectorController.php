@@ -8,6 +8,7 @@ use app\models\SearchDirector;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ArrayDataProvider;
 
 /**
  * DirectorController implements the CRUD actions for Directors model.
@@ -37,6 +38,21 @@ class DirectorController extends Controller
     {
         $searchModel = new SearchDirector();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionShow()
+    {
+        $searchModel = new SearchDirector();
+        $directors = Directors::find()
+            ->select('directors.*')
+            ->joinWith('films', '`films`.`director_id` = `directors`.`id`')
+            ->all();
+        $dataProvider = new ArrayDataProvider(['allModels' => $directors]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
