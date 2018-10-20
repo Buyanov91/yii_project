@@ -37,7 +37,6 @@ class GenreFilm extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'film_id' => 'Film ID',
             'genre_id' => 'Genre ID',
         ];
