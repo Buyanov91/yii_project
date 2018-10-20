@@ -19,6 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Films', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <h4>
+        Сайт посетили <b><?=$count?></b> раз(а).
+    </h4>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

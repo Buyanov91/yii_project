@@ -6,8 +6,10 @@ use Yii;
 use app\models\Films;
 use app\models\SearchFilm;
 use yii\web\Controller;
+use yii\web\Cookie;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Counter;
 
 /**
  * FilmController implements the CRUD actions for Films model.
@@ -35,10 +37,13 @@ class FilmController extends Controller
      */
     public function actionIndex()
     {
+        $counter = new Counter();
+        $visitCount = $counter->setCount();
         $searchModel = new SearchFilm();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'count' => $visitCount,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -125,3 +130,5 @@ class FilmController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
+
+
