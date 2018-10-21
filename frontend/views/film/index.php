@@ -7,16 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SearchFilm */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Films';
+$this->title = 'Фильмы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="films-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Films', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить фильм', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <h4>

@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "films".
@@ -12,7 +14,7 @@ use Yii;
  * @property int $year
  * @property int $director_id
  */
-class Films extends \yii\db\ActiveRecord
+class Films extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -20,6 +22,20 @@ class Films extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'films';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                 'value' => date('d.m.Y H:i'),
+            ],
+        ];
     }
 
     public function getDirector()
@@ -36,6 +52,7 @@ class Films extends \yii\db\ActiveRecord
             [['title', 'year'], 'required'],
             [['year', 'director_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
+            [['author'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,9 +63,12 @@ class Films extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'year' => 'Year',
-            'director_id' => 'Director ID',
+            'title' => 'Название',
+            'year' => 'Год',
+            'director_id' => 'Режиссер',
+            'author' => 'Автор',
+            'created_at' => 'Добавленно',
+            'updated_at' => 'Редактированно',
         ];
     }
 }

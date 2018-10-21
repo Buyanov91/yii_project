@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Films */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Films', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Фильмы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="films-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Уверенны, что хотите удалить?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -32,6 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'year',
             'director_id',
+            'author',
+            'created_at',
+            'updated_at',
         ],
     ]) ?>
 

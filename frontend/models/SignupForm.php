@@ -55,4 +55,16 @@ class SignupForm extends Model
         
         return $user->save() ? $user : null;
     }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя',
+            'password' => 'Пароль',
+            'email' => 'Почта',
+        ];
+    }
 }

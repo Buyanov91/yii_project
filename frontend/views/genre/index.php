@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SearchGenre */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Genres';
+$this->title = 'Жанры';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="genres-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Genres', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить жанр', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
