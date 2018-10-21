@@ -9,5 +9,14 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'user' => [
+            'class' => 'yii\web\User',
+            'identityClass' => 'app\models\User',
+            'loginUrl' => ['/site/login'],
+            'on afterLogin' => function() {
+                Yii::$app->user->identity->updateAttributes(['auth_time' => date('d.m.Y gitH:i')]);
+            }
+        ],
+
     ],
 ];

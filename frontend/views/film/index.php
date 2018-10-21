@@ -23,6 +23,12 @@ $this->params['breadcrumbs'][] = $this->title;
         Сайт посетили <b><?=$count?></b> раз(а).
     </h4>
 
+    <?php if (!Yii::$app->user->isGuest) : ?>
+    <h4>
+        Время последней авторизации <b><?=Yii::$app->user->identity->auth_time?></b>.
+    </h4>
+    <?php endif; ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
