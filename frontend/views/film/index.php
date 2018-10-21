@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'year',
             'director_id',
+            'length_title',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\LengthTitleBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
@@ -35,6 +36,13 @@ class Films extends ActiveRecord
                 ],
                  'value' => date('d.m.Y H:i'),
             ],
+            [
+                'class' => LengthTitleBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['length_title'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['length_title'],
+                ],
+            ],
         ];
     }
 
@@ -66,6 +74,7 @@ class Films extends ActiveRecord
             'title' => 'Название',
             'year' => 'Год',
             'director_id' => 'Режиссер',
+            'length_title' => 'Длина',
             'author' => 'Автор',
             'created_at' => 'Добавленно',
             'updated_at' => 'Редактированно',

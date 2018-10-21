@@ -58,7 +58,7 @@ AppAsset::register($this);
         'items' => $menuItems,
     ]);
     NavBar::end();
-//    ?>
+    ?>
 
     <div class="container">
         <?= Breadcrumbs::widget([

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use function PHPSTORM_META\type;
 use Yii;
 use app\models\Films;
 use app\models\SearchFilm;
